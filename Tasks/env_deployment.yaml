@@ -1,0 +1,35 @@
+############# Add environment variables to your Deployment
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfigmap
+data:
+  username: demo1
+  sql_user: demo2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: env-configmap
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: app
+          command: ["/bin/sh", "-c", "printenv"]
+          image: busybox:latest
+          envFrom:
+            - configMapRef:
+                name: myconfigmap
+######################################################################
+# For results ---->>> kubectl logs <container-name>

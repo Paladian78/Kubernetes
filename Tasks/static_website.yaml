@@ -35,3 +35,6 @@ spec:
           image: nginx
           ports:
             - containerPort: 80
+########################################################################
+# For results see visit -->> NodeIp:NodePort
+# For minikube get service url to see reults
