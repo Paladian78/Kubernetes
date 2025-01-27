@@ -1,0 +1,49 @@
+############################
+## Command -->>>>> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.0/deploy/static/provider/cloud/deploy.yaml
+############################
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # Default nginx ingress controller name
+  rules:
+    - http:
+        paths:
+          - path: /testpath
+            pathType: Prefix
+            backend:
+              service:
+                name: test
+                port:
+                  number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+  labels:
+    app: my-app
+spec:
+  type: ClusterIP
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod
+  labels:
+    app: my-app
+spec:
+  containers:
+    - name: my-app-container
+      image: nginx
+      ports:
+        - containerPort: 80
