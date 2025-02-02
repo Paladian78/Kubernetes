@@ -95,6 +95,48 @@ helm status myrelease
 helm get manifest myrelease
 ```
 
+## Charts Directory
+
+The `charts` directory within a Helm chart is used to manage dependencies. When you add dependencies to your chart, they are stored in this directory. Dependencies are other Helm charts that your chart relies on.
+
+### Adding a Dependency
+
+To add a dependency to your chart, you need to update the `Chart.yaml` file with the dependency information and then run the following command:
+
+```sh
+helm dependency update
+```
+
+### Example `Chart.yaml` with Dependencies
+
+```yaml
+apiVersion: v2
+name: mychart
+version: 0.1.0
+dependencies:
+    - name: nginx
+        version: 1.2.3
+        repository: https://example.com/charts
+```
+
+## Subcharts
+
+Subcharts are Helm charts that are included as dependencies in a parent chart. They allow you to manage complex applications by breaking them down into smaller, reusable components.
+
+### Using Subcharts
+
+When you include a subchart as a dependency, Helm will automatically manage the installation and upgrade of the subchart along with the parent chart. You can override the values of a subchart by specifying them in the parent chart's `values.yaml` file.
+
+### Example `values.yaml` with Subchart Overrides
+
+```yaml
+nginx:
+  replicaCount: 2
+  image:
+    repository: nginx
+    tag: stable
+```
+
 ## Conclusion
 
 Helm simplifies the process of deploying and managing Kubernetes applications. By using Helm, you can easily package, configure, and deploy applications and services onto your Kubernetes cluster.
