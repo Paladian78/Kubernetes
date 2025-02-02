@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: github-app # set this to your application's name
+  AZURE_WEBAPP_NAME: git-app # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: "./Pipeline/app" # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: "20" # set this to the node version to use
 
