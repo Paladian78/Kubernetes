@@ -6,3 +6,6 @@ nodes:
   - role: control-plane
   - role: worker
   - role: worker
+#########################
+# Minikube
+# minikube start --nodes 2 -p multinode-demo
