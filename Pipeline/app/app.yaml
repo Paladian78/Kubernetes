@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: default-testing
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-room
+  namespace: default-testing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chat-room
+  template:
+    metadata:
+      labels:
+        app: chat-room
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      containers:
+        - name: chat-room
+          image: paladian78/chat-room:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "0"
+              memory: "0"
+            limits:
+              cpu: "256"
+              memory: 11400G
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat-room-service
+  namespace: default-testing
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 3000
+      name: port80
+      port: 3000
+      protocol: TCP
+  selector:
+    app: chat-room
