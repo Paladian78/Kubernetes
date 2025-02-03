@@ -29,4 +29,5 @@ jobs:
           resource-group: ${{ env.AKS_RESOURCE_GROUP }}
           cluster-name: ${{ env.AKS_CLUSTER_NAME }}
       - run: |
-          kubectl apply -f app.yaml
+          pwd
+          kubectl apply -f ./Pipeline/app/app.yaml
