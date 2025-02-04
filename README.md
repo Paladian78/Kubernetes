@@ -16,11 +16,11 @@ This project provides hands-on learning for various concepts of Kubernetes. It i
 
 1. Clone the repository:
    ```sh
-   git clone /d:/KUBERNETES
+   git clone https://github.com/Paladian78/Kubernetes.git
    ```
 2. Navigate to the project directory:
    ```sh
-   cd /d:/KUBERNETES
+   cd KUBERNETES
    ```
 3. Follow the instructions in each section to learn and practice Kubernetes concepts.
 
