@@ -1,0 +1,19 @@
+apiVersion: apps.bixbite.io/v1
+kind: ConfigMapSync
+metadata:
+  labels:
+    app.kubernetes.io/name: configmapsync
+    app.kubernetes.io/instance: configmapsync-sample
+    app.kubernetes.io/part-of: configmapsync
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: configmapsync
+    app: configmapsync-operator
+  name: configmapsync-sample
+  namespace: development1
+spec:
+  SourceNamespace: "development1"
+  DestinationNamespace: "development2"
+  ConfigMapName: "game-demo"
+##### This is just a sample (Currently not working)
+####### Will update it further
+
