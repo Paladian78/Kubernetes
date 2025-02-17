@@ -41,3 +41,10 @@ spec:
         resources:
           requests:
             storage: 1Gi
+################################################################
+# kubectl drain <node-name> --ignore-daemonsets --delete-emptydir-data
+################################################################
+# To revert back the changes:
+# kubectl uncordon <node-name>
+################################################################
+# Need to update about the storage provisioner for implementation
