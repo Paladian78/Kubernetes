@@ -1,5 +1,6 @@
 # three node (two workers) cluster config
 # Kind (Kubernetes in Docker)
+# king create cluster --config=kind-config.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
