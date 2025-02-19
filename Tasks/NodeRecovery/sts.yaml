@@ -1,14 +1,3 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: my-storage-class
-provisioner: kubernetes.io/no-provisioner # Change this based on your cloud provider
-parameters:
-  type: gp2
-reclaimPolicy: Retain
-allowVolumeExpansion: true
-volumeBindingMode: WaitForFirstConsumer
----
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -37,7 +26,7 @@ spec:
         name: nginx-storage
       spec:
         accessModes: ["ReadWriteOnce"]
-        storageClassName: my-storage-class
+        storageClassName: default
         resources:
           requests:
             storage: 1Gi
