@@ -1,38 +1,34 @@
 # **Installation using HELM**
 
-### Sidecar Installation
+## Sidecar Installation
 
-#### Commands:
-
-**The commands used for updating helm:**
+### **The commands used for updating helm:**
 
 `helm repo add istio https://istio-release.storage.googleapis.com/charts`
 
 `helm repo update`
 
-**Install Istio:**
+### **Install Istio:**
 
 `helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace`
 
 `helm install istiod istio/istiod -n istio-system --wait`
 
-**Implementation:**
+### **Implementation:**
 
 `kubectl label namespace <your-namespace-name> istio-injection=enabled`
 
 You can rollout restart for all the workloads in that namespace and the sidecar will be injected in that namespace
 
-### Ambient Mode
+## Ambient Mode
 
-#### Commands:
-
-**The commands used for updating helm:**
+### **The commands used for updating helm:**
 
 `helm repo add istio https://istio-release.storage.googleapis.com/charts`
 
 `helm repo update`
 
-**Install Istio:**
+### **Install Istio:**
 
 `helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace`
 
@@ -44,12 +40,12 @@ You can rollout restart for all the workloads in that namespace and the sidecar 
 
 `helm install ztunnel istio/ztunnel -n istio-system --wait`
 
-**Implementation:**
+### **Implementation:**
 
 `kubectl label namespace <your-namespace-name> <label for ambient mode>`
 
 You can rollout restart for all the workloads in that namespace and the sidecar will be injected in that namespace
 
-**For Further queries refer docs:**
+## **For Further queries refer docs:**
 
 https://istio.io/latest/docs/
